@@ -43,6 +43,12 @@ path = kagglehub.dataset_download('rohanrao/air-quality-data-in-india')
 5. Place `city_day.csv` in this `data/` folder, or update the `DATA_PATH`
    variable in the notebook to point to its location.
 
+Before running locally, confirm that the expected file is available:
+
+```text
+data/city_day.csv
+```
+
 ### Option 3: Kaggle API
 
 ```bash
