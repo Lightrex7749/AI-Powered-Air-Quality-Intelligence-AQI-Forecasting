@@ -57,3 +57,6 @@ unzip air-quality-data-in-india.zip
 The raw dataset file is **not included in this repository** due to its
 size (~73MB) and to respect the original dataset's licensing/hosting terms
 on Kaggle. Please download it directly from the source above.
+
+The repository ignores `data/*.csv` and `data/*.zip`, so downloaded source
+archives and extracted raw data stay local and are not committed.
