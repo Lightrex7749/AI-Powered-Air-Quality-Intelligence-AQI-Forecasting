@@ -160,9 +160,15 @@ AI-Air-Quality-Intelligence/
 
 ### Option 2: Local Environment
 
+Use Python 3.10 or newer and create an isolated virtual environment before
+installing the pinned dependencies:
+
 ```bash
 git clone https://github.com/Lightrex7749/AI-Powered-Air-Quality-Intelligence-AQI-Forecasting.git
 cd AI-Powered-Air-Quality-Intelligence-AQI-Forecasting
+python -m venv .venv
+# macOS/Linux: source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 jupyter notebook notebooks/Gaurav_Rajbhar_AQI_Intelligence.ipynb
 ```
