@@ -139,6 +139,9 @@ AI-Air-Quality-Intelligence/
 ├── data/
 │   └── README.md
 │
+├── Graphs/
+│   └── Generated analysis figures (`.png`)
+│
 ├── README.md
 ├── requirements.txt
 ├── Gaurav_Rajbhar_AQI_ProjectReport.docx
