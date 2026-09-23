@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/*.csv
+data/*.zip
+saved_models/
+*.pkl
+.DS_Store
+Thumbs.db
+.virtual_documents/
