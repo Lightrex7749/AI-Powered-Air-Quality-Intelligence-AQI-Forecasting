@@ -3,6 +3,7 @@
 ### AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026 | BharatCares
 
 **Author:** Gaurav Rajbhar
+**Repository:** https://github.com/Lightrex7749/AI-Powered-Air-Quality-Intelligence-AQI-Forecasting
 
 ---
 
@@ -51,13 +52,15 @@ See [`data/README.md`](data/README.md) for download instructions.
 
 ## 🧰 Technologies
 
-- Python 3
-- Pandas, NumPy — data handling
-- Matplotlib, Seaborn — visualization
-- Scikit-learn — Linear Regression, Random Forest, Isolation Forest, metrics
-- XGBoost — gradient boosting model
-- SHAP — model explainability
-- Google Colab — development environment
+| Category | Tools |
+|---|---|
+| Language | Python 3.10+ |
+| Data handling | Pandas 2.2.3, NumPy 2.1.3 |
+| Visualization | Matplotlib 3.10.0, Seaborn 0.13.2 |
+| Machine learning | Scikit-learn 1.6.1, XGBoost 3.4.1 |
+| Explainability | SHAP 0.52.0 |
+| Dataset access | Kagglehub 1.0.2 |
+| Environment | Google Colab or Jupyter Notebook |
 
 ---
 
@@ -93,6 +96,65 @@ Error Analysis & Air Quality Intelligence Summary
 - **`Xylene` dropped** (61.3% missing) — too sparse to be reliable.
 
 ---
+
+## 🧹 Data Cleaning Summary
+
+| Step | Decision | Justification |
+|---|---|---|
+| Date conversion | Converted `Date` to datetime | All 29,531 dates parsed successfully |
+| Sorting | Sorted by `City`, then `Date` | Required for correct time-series operations |
+| Drop column | Dropped `Xylene` (61.3% missing) | Too sparse to be a reliable feature |
+| Imputation | Per-city time-based interpolation on pollutant features | Preserves temporal variation better than a global fill |
+| Fallback | Per-city median, then global median | Handles cities with an entire pollutant series missing |
+| Target handling | `AQI` and `AQI_Bucket` were never imputed | Prevents target contamination during forecasting |
+| Duplicates | 0 duplicate rows found | No action needed |
+| Negative values | 0 negative pollutant values found | No action needed |
+
+**Documented artifact:** Gurugram had 939 of 1,679 PM10 readings originally
+missing. After interpolation, 766 remaining gaps were filled with the
+city-level median, creating a visible aggregate PM10 distribution spike. This
+is an acknowledged imputation artifact and does not affect the AQI target.
+
+## 📊 Exploratory Data Analysis Highlights
+
+### AQI Distribution
+
+- Mean AQI: 166.46; median: 118; standard deviation: 140.70.
+- AQI ranged from 13 to 2,049 and was strongly right-skewed.
+- Category counts were: Moderate 8,829; Satisfactory 8,224; Poor 2,781;
+    Very Poor 2,337; Good 1,341; Severe 1,338.
+
+### City and Seasonal Patterns
+
+- Highest average AQI: Ahmedabad (452.12), Delhi (259.49), and Patna (240.78).
+- Lowest average AQI: Aizawl (34.77), Shillong (53.80), and Coimbatore (73.02).
+- Winter (220.61) and post-monsoon (215.47) were substantially worse than
+    monsoon (115.56); summer averaged 147.67.
+- November and January had the highest monthly averages, while July and
+    August had the lowest.
+
+### Pollutant Correlations
+
+The strongest pollutant correlations with AQI were CO (0.640), PM2.5 (0.635),
+NO2 (0.531), and PM10 (0.519). Ahmedabad's unusually high average was also
+investigated: it contained 647 missing AQI days, including consecutive gaps of
+340 and 232 days. The analysis preserves those gaps rather than drawing
+misleading lines between distant observations.
+
+## 🛠️ Feature Engineering
+
+| Feature Type | Features |
+|---|---|
+| AQI lags | `AQI_lag_1`, `AQI_lag_3`, `AQI_lag_7` |
+| Pollutant lags | `PM2.5_lag_1`, `PM10_lag_1`, `NO2_lag_1`, `CO_lag_1` |
+| Rolling averages | `AQI_roll_mean_3`, `AQI_roll_mean_7`, `PM2.5_roll_mean_3` |
+| Calendar features | `Month`, `DayOfWeek`, and one-hot encoded `Season` |
+| Target | `AQI_target_next_day`, shifted per city |
+
+All lag and rolling features were computed with `groupby('City')`. Rolling
+windows were shifted by one day before aggregation so the current day's value
+could not leak into its own prediction. The final modeling dataset contained
+21,841 rows and represented all 26 cities.
 
 ## 🤖 Models & Results
 
@@ -157,6 +219,7 @@ AI-Air-Quality-Intelligence/
 │       └── Selected report visualizations (`.png`)
 │
 ├── README.md
+├── PROJECT_SUBMISSION.md
 ├── requirements.txt
 ├── Gaurav_Rajbhar_AQI_ProjectReport.docx
 └── .gitignore
@@ -216,6 +279,14 @@ anomaly timelines, and SHAP explanations.
 - Anomaly detection is statistical, not a verified real-world pollution event confirmation.
 
 Full details in the notebook's Limitations section and project report.
+
+## 📌 Conclusion
+
+The project demonstrates a complete and technically defensible workflow from
+raw data investigation through cleaning, exploratory analysis, leakage-safe
+forecasting, anomaly detection, and explainable AI. The results show that
+recent AQI history captures most of the predictable next-day signal, while
+Ahmedabad remains a consistent outlier in both pollution level and model error.
 
 ---
 
