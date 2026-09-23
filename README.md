@@ -175,6 +175,10 @@ jupyter notebook notebooks/Gaurav_Rajbhar_AQI_Intelligence.ipynb
 
 See [`data/README.md`](data/README.md) for dataset download instructions if running locally.
 
+The notebook also regenerates the analysis figures under `Graphs/`, including
+AQI distributions, temporal trends, model comparisons, prediction errors,
+anomaly timelines, and SHAP explanations.
+
 ---
 
 ## ⚠️ Limitations
