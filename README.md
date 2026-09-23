@@ -158,8 +158,8 @@ AI-Air-Quality-Intelligence/
 ### Option 2: Local Environment
 
 ```bash
-git clone https://github.com/<your-username>/AI-Air-Quality-Intelligence.git
-cd AI-Air-Quality-Intelligence
+git clone https://github.com/Lightrex7749/AI-Powered-Air-Quality-Intelligence-AQI-Forecasting.git
+cd AI-Powered-Air-Quality-Intelligence-AQI-Forecasting
 pip install -r requirements.txt
 jupyter notebook notebooks/Gaurav_Rajbhar_AQI_Intelligence.ipynb
 ```
