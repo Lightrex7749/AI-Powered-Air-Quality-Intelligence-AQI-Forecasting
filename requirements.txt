@@ -7,3 +7,4 @@ xgboost==3.4.1
 shap==0.52.0
 joblib==1.6.0
 kagglehub==1.0.2
+notebook==7.3.2
