@@ -12,6 +12,10 @@ Air pollution is a major public health and environmental concern in Indian citie
 
 This is not a simple "AQI Prediction Using Machine Learning" script — it is a complete analytical case study that investigates real data quality issues, documents genuine dataset artifacts, engineers time-series-safe features, compares multiple models honestly, and explains model behavior using SHAP.
 
+![Average AQI over time](assets/images/aqi_trend_overall.png)
+
+*Average AQI across all cities from 2015 to 2020, showing recurring seasonal variation.*
+
 ---
 
 ## 🎯 Problem Statement
@@ -102,7 +106,13 @@ Next-day AQI forecasting, evaluated on a chronological hold-out test set:
 
 **Random Forest** was selected as the best-performing model based on RMSE. Notably, all three models perform comparably, indicating that engineered lag/rolling AQI features capture most of the learnable temporal signal in this dataset.
 
+![Model comparison](assets/images/model_comparison.png)
+
+![Actual versus predicted AQI](assets/images/actual_vs_predicted.png)
+
 ### SHAP Top Predictive Features
+
+![SHAP feature importance](assets/images/shap_importance.png)
 
 | Rank | Feature | Mean \|SHAP\| |
 |---|---|---:|
@@ -141,6 +151,10 @@ AI-Air-Quality-Intelligence/
 │
 ├── Graphs/
 │   └── Generated analysis figures (`.png`)
+│
+├── assets/
+│   └── images/
+│       └── Selected report visualizations (`.png`)
 │
 ├── README.md
 ├── requirements.txt

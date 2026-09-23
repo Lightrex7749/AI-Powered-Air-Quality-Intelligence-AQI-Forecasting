@@ -20,6 +20,17 @@ from Kaggle, specifically the `city_day.csv` file.
 - Data is aggregated at a **daily** level per city, sourced from CPCB
   (Central Pollution Control Board) monitoring stations.
 
+## Main Columns
+
+| Column | Description |
+|---|---|
+| `City`, `Date` | City name and observation date |
+| `PM2.5`, `PM10` | Particulate matter concentrations |
+| `NO`, `NO2`, `NOx`, `NH3` | Nitrogen oxide and ammonia measurements |
+| `CO`, `SO2`, `O3` | Carbon monoxide, sulfur dioxide, and ozone |
+| `Benzene`, `Toluene`, `Xylene` | Volatile organic compound measurements |
+| `AQI`, `AQI_Bucket` | Computed index and air-quality category |
+
 ## How to Download
 
 ### Option 1: Using `kagglehub` (used in the project notebook)
