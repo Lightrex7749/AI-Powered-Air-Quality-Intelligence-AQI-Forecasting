@@ -183,6 +183,9 @@ anomaly timelines, and SHAP explanations.
 
 ## ⚠️ Limitations
 
+- Reported metrics and figures correspond to the pinned dependency versions in
+    `requirements.txt`; rerunning with different versions may produce small
+    numerical or rendering differences.
 - Uneven city coverage (96 to 2,009 rows per city in the final modeling set).
 - High missingness in some pollutants required imputation (`Xylene` dropped entirely; `PM10`, `NH3` imputed with documented artifacts, e.g., a median-fill spike in Gurugram's PM10 data).
 - Some cities have zero readings for entire pollutants (e.g., Lucknow has no PM10 data) — a real CPCB monitoring station limitation.
