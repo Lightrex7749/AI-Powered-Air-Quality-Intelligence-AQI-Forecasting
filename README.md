@@ -179,6 +179,13 @@ The notebook also regenerates the analysis figures under `Graphs/`, including
 AQI distributions, temporal trends, model comparisons, prediction errors,
 anomaly timelines, and SHAP explanations.
 
+### Reproducibility Checklist
+
+1. Install the pinned packages from `requirements.txt`.
+2. Download `city_day.csv` using the instructions in `data/README.md`.
+3. Run the notebook from the repository root so relative paths resolve.
+4. Compare regenerated figures and metrics with the committed analysis outputs.
+
 ---
 
 ## ⚠️ Limitations
